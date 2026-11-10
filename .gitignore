@@ -1,0 +1,19 @@
+# 依赖包
+node_modules
+.pnp
+.pnp.js
+
+# next缓存、构建产物
+.next
+out
+
+# 日志
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 编辑器
+.idea
+.vscode
+*.swp
+*.swo

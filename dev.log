@@ -1,0 +1,127 @@
+﻿
+> gra-personalblog@1.0.0 dev
+> next dev
+
+▲ Next.js 16.4.5 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.6.93:3000
+✓ Ready in 6.5s
+✓ Running next.config.ts took 643ms
+
+ GET / 200 in 1089ms (next.js: 724ms, application-code: 364ms)
+npm.cmd : Error: Route "/articles/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` 
+or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+所在位置 行:15 字符: 1498
++ ...  page.html -ErrorAction SilentlyContinue ; npm.cmd run dev *> dev.log
++                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error: Route "/...nc-dynamic-apis:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at ArticleDetailPage (src\app\articles\[slug]\page.tsx:76:43)
+  74 |  */
+  75 | export default function ArticleDetailPage({ params }: { params: { slug: string } }) {
+> 76 |   const article = getArticleBySlug(params.slug);
+     |                                           ^
+  77 |
+  78 |   // 文章不存在时返回 404
+  79 |   if (!article) {
+Error: Route "/articles/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.
+use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (src\app\articles\[slug]\page.tsx:32:43)
+  30 |  */
+  31 | export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+> 32 |   const article = getArticleBySlug(params.slug);
+     |                                           ^
+  33 |   if (!article) return { title: "文章未找到" };
+  34 |
+  35 |   return {
+ GET /articles/nextjs-ssr-deep-dive 404 in 4.8s (next.js: 59ms, generate-params: 4.6s, application-code: 105ms)
+Error: Route "/tags/[tag]" used `params.tag`. `params` is a Promise and must be unwrapped with `await` or `React.use()`
+ before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at TagPage (src\app\tags\[tag]\page.tsx:37:45)
+  35 |  */
+  36 | export default function TagPage({ params }: { params: { tag: string } }) {
+> 37 |   const tagName = decodeURIComponent(params.tag);
+     |                                             ^
+  38 |
+  39 |   // 获取该标签下的所有文章
+  40 |   const articles = getAllArticles().filter((a) => a.tags.includes(tagName));
+Error: Route "/tags/[tag]" used `params.tag`. `params` is a Promise and must be unwrapped with `await` or `React.use()`
+ before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (src\app\tags\[tag]\page.tsx:26:45)
+  24 |  */
+  25 | export function generateMetadata({ params }: { params: { tag: string } }): Metadata {
+> 26 |   const tagName = decodeURIComponent(params.tag);
+     |                                             ^
+  27 |   return {
+  28 |     title: `标签：${tagName}`,
+  29 |     description: `所有带 "${tagName}" 标签的文章`,
+ GET /tags/Next.js 200 in 4.7s (next.js: 57ms, generate-params: 4.6s, application-code: 51ms)
+ GET /search 200 in 125ms (next.js: 54ms, application-code: 72ms)
+ GET /search?q=React 200 in 47ms (next.js: 2ms, application-code: 45ms)
+ GET /dashboard 200 in 124ms (next.js: 53ms, application-code: 71ms)
+ GET /dashboard/editor 200 in 150ms (next.js: 56ms, application-code: 94ms)
+Error: Route "/articles/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.
+use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ArticleDetailPage (src\app\articles\[slug]\page.tsx:76:43)
+  74 |  */
+  75 | export default function ArticleDetailPage({ params }: { params: { slug: string } }) {
+> 76 |   const article = getArticleBySlug(params.slug);
+     |                                           ^
+  77 |
+  78 |   // 文章不存在时返回 404
+  79 |   if (!article) {
+Error: Route "/articles/[slug]" used `params.slug`. `params` is a Promise and must be unwrapped with `await` or `React.
+use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (src\app\articles\[slug]\page.tsx:32:43)
+  30 |  */
+  31 | export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+> 32 |   const article = getArticleBySlug(params.slug);
+     |                                           ^
+  33 |   if (!article) return { title: "文章未找到" };
+  34 |
+  35 |   return {
+ GET /articles/not-exist 404 in 89ms (next.js: 2ms, generate-params: 31ms, application-code: 55ms)
+✓ Compiled in 224ms
+✓ Compiled in 196ms
+✓ Compiled in 195ms
+ GET / 200 in 85ms (next.js: 3ms, application-code: 82ms)
+ GET /articles/nextjs-ssr-deep-dive 200 in 124ms (next.js: 16ms, generate-params: 31ms, application-code: 77ms)
+ GET /tags/Next.js 200 in 101ms (next.js: 18ms, generate-params: 31ms, application-code: 51ms)
+ GET /search 200 in 47ms (next.js: 2ms, application-code: 44ms)
+ GET /dashboard 200 in 50ms (next.js: 2ms, application-code: 48ms)
+ GET /dashboard/editor 200 in 56ms (next.js: 3ms, application-code: 53ms)
+ GET / 200 in 89ms (next.js: 2ms, application-code: 87ms)
+ GET / 200 in 125ms (next.js: 32ms, application-code: 93ms)
+ GET /articles/nextjs-ssr-deep-dive 200 in 65ms (next.js: 4ms, generate-params: 37ms, application-code: 24ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transiti
+ons, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-d
+ata-scroll-behavior
+ GET / 200 in 28ms (next.js: 2ms, application-code: 26ms)
+ GET /dashboard 200 in 20ms (next.js: 2ms, application-code: 17ms)
+ GET / 200 in 28ms (next.js: 2ms, application-code: 26ms)
+ GET /?page=2 200 in 27ms (next.js: 2ms, application-code: 25ms)
+ GET /articles/ai-writing-assistant 200 in 53ms (next.js: 2ms, generate-params: 28ms, application-code: 23ms)
+ GET / 200 in 29ms (next.js: 2ms, application-code: 27ms)
+ GET / 200 in 12ms (next.js: 2ms, application-code: 10ms)
+ GET / 200 in 27ms (next.js: 2ms, application-code: 25ms)
+ GET / 200 in 13ms (next.js: 2ms, application-code: 10ms)
+ GET / 200 in 27ms (next.js: 2.0ms, application-code: 25ms)
+ GET / 200 in 13ms (next.js: 2ms, application-code: 11ms)
+ GET / 200 in 28ms (next.js: 2ms, application-code: 26ms)
+ GET / 200 in 12ms (next.js: 2.0ms, application-code: 10ms)
+ GET / 200 in 26ms (next.js: 1.9ms, application-code: 24ms)
+ GET / 200 in 102ms (next.js: 3ms, application-code: 99ms)
+ GET /dashboard 200 in 20ms (next.js: 2ms, application-code: 18ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transiti
+ons, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-d
+ata-scroll-behavior
+ GET / 200 in 31ms (next.js: 2ms, application-code: 28ms)
+ GET /dashboard 200 in 20ms (next.js: 2ms, application-code: 18ms)
+ GET /dashboard/editor 200 in 24ms (next.js: 3ms, application-code: 22ms)
+[browser] messageListener is dead 
+    at <unknown> (chrome-extension://eilkilgemogpkebfmhkkapogkiijikli/vt.zh-cn.user.js:3235:33) (chrome-extension://eil
+kilgemogpkebfmhkkapogkiijikli/vt.zh-cn.user.js:3235:33)
+[browser] messageListener is dead 
+    at <unknown> (chrome-extension://eilkilgemogpkebfmhkkapogkiijikli/vt.zh-cn.user.js:3235:33) (chrome-extension://eil
+kilgemogpkebfmhkkapogkiijikli/vt.zh-cn.user.js:3235:33)

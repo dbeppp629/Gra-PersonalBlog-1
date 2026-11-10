@@ -1,0 +1,130 @@
+/**
+ * 全局样式入口
+ * TailwindCSS v4 使用 @import 而非 v3 的 @tailwind 指令
+ * 通过 @theme 配置主题变量
+ */
+@import "tailwindcss";
+
+/**
+ * 主题配置
+ * 使用 TailwindCSS v4 的 @theme 块定义设计令牌
+ */
+@theme {
+  /* 自定义颜色（亮色主题） */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-accent: #8b5cf6;
+  --color-accent-dark: #7c3aed;
+
+  /* 字体 */
+  --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", Georgia, serif;
+  --font-mono: "JetBrains Mono", Menlo, Consolas, monospace;
+
+  /* 自定义动画时长 */
+  --animate-duration-fast: 150ms;
+  --animate-duration-normal: 300ms;
+  --animate-duration-slow: 500ms;
+}
+
+/**
+ * 暗色主题变体
+ * 当 html 或 body 上有 .dark 类时应用以下覆盖
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+ * 基础样式重置
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-900 antialiased transition-colors duration-300;
+  font-family: var(--font-sans);
+}
+
+.dark body {
+  @apply bg-gray-950 text-gray-100;
+}
+
+/**
+ * 自定义滚动条
+ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/**
+ * 文章内容区的排版样式
+ * 用于渲染富文本 HTML 时的样式控制
+ */
+.article-content {
+  @apply leading-relaxed;
+}
+
+.article-content h1 {
+  @apply text-3xl font-bold mt-8 mb-4;
+}
+
+.article-content h2 {
+  @apply text-2xl font-bold mt-8 mb-4 pb-2 border-b border-gray-200 dark:border-gray-800;
+}
+
+.article-content h3 {
+  @apply text-xl font-semibold mt-6 mb-3;
+}
+
+.article-content p {
+  @apply my-4 text-gray-700 dark:text-gray-300;
+}
+
+.article-content ul {
+  @apply list-disc pl-6 my-4 space-y-2 text-gray-700 dark:text-gray-300;
+}
+
+.article-content ol {
+  @apply list-decimal pl-6 my-4 space-y-2 text-gray-700 dark:text-gray-300;
+}
+
+.article-content blockquote {
+  @apply border-l-4 border-primary pl-4 py-2 my-6 bg-gray-50 dark:bg-gray-900 rounded-r italic text-gray-600 dark:text-gray-400;
+}
+
+.article-content pre {
+  @apply bg-gray-900 dark:bg-gray-800 text-gray-100 rounded-lg p-4 my-6 overflow-x-auto text-sm;
+}
+
+.article-content code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono text-primary-dark dark:text-primary;
+}
+
+.article-content pre code {
+  @apply bg-transparent p-0 text-gray-100;
+}
+
+.article-content a {
+  @apply text-primary hover:text-primary-dark underline underline-offset-2;
+}
+
+.article-content img {
+  @apply rounded-lg my-6 max-w-full;
+}
+
+.article-content hr {
+  @apply my-8 border-gray-200 dark:border-gray-800;
+}
